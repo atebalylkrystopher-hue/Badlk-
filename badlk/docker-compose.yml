@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  badlk:
+    build: ./backend
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+      - ./frontend:/app/../frontend
+    environment:
+      - PORT=4000
+      - JWT_SECRET=change_this_secret_in_production
+      - DATABASE_URL=sqlite:./badlk.db
+      - MOBILE_MONEY_PROVIDER=SIMULATED
+      - MTN_API_KEY=sandbox_key
+      - MTN_API_SECRET=sandbox_secret
+      - ORANGE_API_KEY=sandbox_key
+      - ORANGE_API_SECRET=sandbox_secret

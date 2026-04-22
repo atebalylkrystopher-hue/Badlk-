@@ -1,0 +1,38 @@
+init_badlk.ps1
+# Script PowerShell pour initialiser et pousser BADLK sur GitHub
+# ⚠️ Remplace l'URL par celle de ton dépôt GitHub
+
+$repoUrl = "https://github.com/atebalylkrystopher-hue/badlk.git"
+
+Write-Host "=== Initialisation du dépôt BADLK ==="
+
+# Vérifier Git
+try {
+    git --version
+} catch {
+    Write-Host "❌ Git n'est pas installé ou pas dans le PATH"
+    exit
+}
+
+# Initialiser le dépôt
+git init
+Write-Host "✅ Dépôt initialisé"
+
+# Ajouter tous les fichiers
+git add .
+Write-Host "✅ Fichiers ajoutés"
+
+# Premier commit
+git commit -m "Initial commit BADLK"
+Write-Host "✅ Commit effectué"
+
+# Créer la branche main
+git branch -M main
+
+# Ajouter le remote
+git remote add origin $repoUrl
+Write-Host "✅ Remote ajouté : $repoUrl"
+
+# Pousser vers GitHub
+git push -u origin main
+Write-Host "✅ Projet poussé sur GitHub"
